@@ -69,3 +69,34 @@
 .section__inputs>input:focus {
   outline: none;
 }
+
+.section__inputs>button {
+  padding: 10px 50px;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: white;
+}
+
+.section__inputs>button:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon>h3 {
+  font-size: 15px;
+  font-weight: 200;
+  text-transform: capitalize;
+}
+
+.temperature>h1 {
+  font-size: 60px;
+}
