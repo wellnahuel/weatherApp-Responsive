@@ -1,5 +1,6 @@
 import hotBackground from './assets/hot.jpg'
 import coldBackground from './assets/cold.jpg'
+import Details from './components/Details'
 
 function App() {
   return (
@@ -22,6 +23,11 @@ function App() {
               <h1>34 °C</h1>
             </div>
           </div>
+
+
+        {/* bottom details */}
+
+        <Details />
         </div>
       </div>
     </div>
