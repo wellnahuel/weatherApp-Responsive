@@ -9,7 +9,7 @@ const getFormattedWeatherData = async (city, units = "metric") => {
         .then((res) => res.json())
         .then((data) => data);
 
-    /*     console.log(data)  */
+        console.log(data)  
 
     /* aca hago destructuring, para filtrar la data que me llega, yo no quiero TODO */
 

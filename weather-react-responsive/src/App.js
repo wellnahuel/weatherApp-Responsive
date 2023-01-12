@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { getFormattedWeatherData } from './weather';
 
 function App() {
+  const [city, setCity] = useState("austin");
+  const [back, setBack] = useState(hotBackground)
 
   const [weather, setWeather] = useState(null);
   const [units, setUnits] = useState("metric");
@@ -12,22 +14,47 @@ function App() {
   useEffect(() => {
     const fetchWeatherData = async () => {
       const data = await getFormattedWeatherData("paris", units) /* en weather.js a esta funcion se le pasa city y units */
-      /*   console.log(data); */
+        console.log(data); 
       setWeather(data)
+
+      //fondo dinamico
+
+      const limit = units === "metric" ? 20 : 60;
+      if (data.temp <= limit) setBack(coldBackground);
+      else setBack(hotBackground);
+
+
     };
     fetchWeatherData();
-  }, [])
+  }, [units, city])
+
+  const handleUnitsClick = (e) => { /* para pasar de C a F */
+    const button = e.currentTarget;
+    console.log(button)
+    console.log(button.innerText); /* pongo innetttext para que el consolelog me muestre a 'F' */
+    const currentUnit = button.innerText.slice(1);
+
+    const isC = currentUnit === 'C';
+    button.innertText = isC ? '°F' : '°C';
+    setUnits(isC ? 'metric' : 'imperial');
+  }
+
+  const enterKeyPress = (e) => { /* el event que se ejecuta cuando apreto enter en el campo de busqueda */
+    if (e.keyCode === 13) {
+      setCity(e.currentTarget.value)
+    }
+  }
 
   return (
-    <div className="app" style={{ backgroundImage: `url(${coldBackground})` }}>
+    <div className="app" style={{ backgroundImage: `url(${back})` }}>
       <div className="overlay">
         {/* quiero renderizar container solo si esta weather, sino no */}
         {
           weather && (
             <div className="container">
               <div className="section section__inputs">
-                <input type='text' name='city' placeholder='Enter name of the City...'></input>
-                <button>°F</button>
+                <input onKeyDown={enterKeyPress} type='text' name='city' placeholder='Enter name of the City...'></input>
+                <button onClick={(e) => handleUnitsClick(e)}>°F</button>
               </div>
 
 
@@ -49,7 +76,7 @@ function App() {
 
               {/* bottom details */}
 
-              <Details weather={weather} units={units}/>
+              <Details weather={weather} units={units} />
             </div>
           )
         }
