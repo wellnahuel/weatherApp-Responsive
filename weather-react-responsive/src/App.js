@@ -1,30 +1,26 @@
 import hotBackground from './assets/hot.jpg'
-import coldBackground from './assets/cold.jpg'
+//import coldBackground from './assets/cold.jpg'
 import Details from './components/Details'
 import { useEffect, useState } from 'react';
 import { getFormattedWeatherData } from './weather';
 
 function App() {
-  const [city, setCity] = useState("austin");
-  const [back, setBack] = useState(hotBackground)
-
+  const [city, setCity] = useState("mar del plata");
   const [weather, setWeather] = useState(null);
   const [units, setUnits] = useState("metric");
+  //const [back, setBack] = useState(hotBackground)
 
   useEffect(() => {
     const fetchWeatherData = async () => {
-      const data = await getFormattedWeatherData("paris", units) /* en weather.js a esta funcion se le pasa city y units */
-        console.log(data); 
-      setWeather(data)
-
+      const data = await getFormattedWeatherData(city, units) /* en weather.js a esta funcion se le pasa city y units */
+      console.log(data);
+      setWeather(data);
       //fondo dinamico
-
-      const limit = units === "metric" ? 20 : 60;
+      /* const limit = units === "metric" ? 20 : 60;
       if (data.temp <= limit) setBack(coldBackground);
-      else setBack(hotBackground);
-
-
+      else setBack(hotBackground); */
     };
+
     fetchWeatherData();
   }, [units, city])
 
@@ -34,8 +30,8 @@ function App() {
     console.log(button.innerText); /* pongo innetttext para que el consolelog me muestre a 'F' */
     const currentUnit = button.innerText.slice(1);
 
-    const isC = currentUnit === 'C';
-    button.innertText = isC ? '°F' : '°C';
+    const isC = currentUnit === "C";
+    button.innerText = isC ? "°F" : "°C";
     setUnits(isC ? 'metric' : 'imperial');
   }
 
@@ -46,7 +42,7 @@ function App() {
   }
 
   return (
-    <div className="app" style={{ backgroundImage: `url(${back})` }}>
+    <div className="app" style={{ backgroundImage: `url(${hotBackground})` }}>
       <div className="overlay">
         {/* quiero renderizar container solo si esta weather, sino no */}
         {
