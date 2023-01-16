@@ -1,4 +1,4 @@
-import hotBackground from './assets/hot.jpg'
+import hotBackground from './assets/weather.jpg'
 import Details from './components/Details'
 import { useEffect, useState } from 'react';
 import { getFormattedWeatherData } from './weather';
