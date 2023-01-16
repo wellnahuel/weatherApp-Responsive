@@ -1,6 +1,5 @@
 import React from 'react'
 import "./details.css"
-
 import { FaArrowUp, FaArrowDown, FaWind } from "react-icons/fa";
 import { BiHappy } from "react-icons/bi";
 import { MdCompress, MdOutlineWaterDrop } from "react-icons/md";

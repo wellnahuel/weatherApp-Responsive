@@ -35,12 +35,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;  
+  justify-content: space-between;
   padding: 1rem;
   /* esto hace que todo quede centrado */
 }
-
-/*  */
 
 .section {
   width: 100%;
@@ -49,7 +47,8 @@
   color: white
 }
 
-.section__inputs, .section__temperature {
+.section__inputs,
+.section__temperature {
   display: flex;
   align-items: center;
   justify-content: space-between;
