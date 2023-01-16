@@ -63,6 +63,7 @@
   font-size: 20px;
   padding: 0.5rem;
   font-weight: 200;
+  min-width:50px;
 }
 
 .section__inputs>input:focus {
