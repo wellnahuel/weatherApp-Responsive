@@ -38,7 +38,7 @@ function App() {
           weather && (
             <div className="container">
               <div className="section section__inputs">
-                <input onKeyDown={enterKeyPress} type='text' name='city' placeholder='Enter name of the City...'></input>
+                <input onKeyDown={enterKeyPress} type='text' name='city' placeholder='City name...'></input>
                 <button onClick={(e) => handleUnitsClick(e)}>°F</button>
               </div>
               <div className="section section__temperature">
